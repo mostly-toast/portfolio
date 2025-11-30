@@ -1,0 +1,35 @@
+/* Base Styles */
+body { font-family: 'JetBrains Mono', monospace; }
+
+/* Custom Pixel Borders */
+.pixel-border { box-shadow: -4px 0 0 0 var(--border-color), 4px 0 0 0 var(--border-color), 0 -4px 0 0 var(--border-color), 0 4px 0 0 var(--border-color); margin: 4px; }
+
+:root { --border-color: #cbd5e1; /* slate-300 */ --hover-shadow: #818cf8; /* indigo-400 */ }
+.dark { --border-color: #1e293b; /* slate-800 */ --hover-shadow: #6366f1; /* indigo-500 */ }
+
+.pixel-border-hover:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--hover-shadow); }
+
+/* Scanline Animation */
+.scanline { width: 100%; height: 100px; z-index: 10; background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.03) 50%, rgba(0,0,0,0) 100%); opacity: 0.05; position: absolute; bottom: 100%; animation: scanline 8s linear infinite; pointer-events: none; }
+@keyframes scanline { 0% { bottom: 100%; } 100% { bottom: -100%; } }
+
+/* Gradient Text Animation */
+.gradient-text { background: linear-gradient(to right, #818cf8, #c084fc, #f472b6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: gradient 5s linear infinite; }
+@keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* Custom Scrollbar (Webkit) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #4f46e5; border: 2px solid #0f172a; }
+::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+/* Typing Cursor */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #6366f1;
+    animation: blink 1s step-end infinite;
+}
+
+/* Kaggle Icon font override */
+.kaggle-icon { font-family: sans-serif; }
