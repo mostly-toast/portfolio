@@ -10,39 +10,36 @@ window.addEventListener('DOMContentLoaded', () => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   
-    // 3. Navbar scroll styling
+    // 3. Navbar scroll styling (Simplified for Dark Mode Only)
     const navbar = document.getElementById('navbar');
-    const htmlElement = document.documentElement;
 
     function handleScroll() {
       if (!navbar) return;
       
       if (window.scrollY > 50) {
-    navbar.classList.add('backdrop-blur-md', 'border-b-2', 'bg-slate-900/90', 'border-slate-800');
+        navbar.classList.add('backdrop-blur-md', 'border-b-2', 'bg-slate-900/90', 'border-slate-800');
+        navbar.classList.remove('bg-transparent');
       } else {
-    navbar.classList.remove('backdrop-blur-md', 'border-b-2', 'bg-slate-900/90', 'border-slate-800', 'bg-white/90', 'border-slate-200');
+        navbar.classList.remove('backdrop-blur-md', 'border-b-2', 'bg-slate-900/90', 'border-slate-800');
+        navbar.classList.add('bg-transparent');
       }
     }
     
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Init check
   
-    // 4. Assign utility classes for tags (Cleaner HTML)
+    // 4. Assign utility classes for tags (Hardcoded Dark Mode)
     document.querySelectorAll('.skill-tag').forEach(tag => {
-      tag.className = 'skill-tag px-3 py-1 text-sm font-mono border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800';
+      tag.className = 'skill-tag px-3 py-1 text-sm font-mono border border-slate-700 bg-slate-800';
     });
     document.querySelectorAll('.skill-tag-highlight').forEach(tag => {
-      tag.className = 'skill-tag-highlight px-3 py-1 text-sm font-mono border border-indigo-100 bg-indigo-50 text-indigo-600 dark:border-indigo-900/50 dark:bg-indigo-900/20 dark:text-indigo-300';
+      tag.className = 'skill-tag-highlight px-3 py-1 text-sm font-mono border border-indigo-900/50 bg-indigo-900/20 text-indigo-300';
     });
     document.querySelectorAll('.tech-tag').forEach(tag => {
       tag.className = 'tech-tag text-[10px] uppercase font-bold tracking-wider opacity-60';
     });
 
-
-    // 5. Theme toggle removed (dark-only)
-
-
-    // 6. Typing Effect Logic
+    // 5. Typing Effect Logic
     const typeWriterElement = document.getElementById('typewriter');
     if (typeWriterElement) {
         const phrases = [
@@ -87,7 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 7. Interactive Canvas Logic
+    // 6. Interactive Canvas Logic (Cleaned up)
     const canvas = document.getElementById('hero-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -95,9 +92,9 @@ window.addEventListener('DOMContentLoaded', () => {
         let particles = [];
 
         // --- CONFIGURATION ---
-        const particleSize = 4;       // Changed from 2 to 3 (Bigger dots)
-        const particleGap = 40;       // Distance between dots
-        const particleBaseAlpha = 0.1; // Transparency (Change this if you want them brighter/dimmer)
+        const particleSize = 4;       
+        const particleGap = 40;       
+        const particleBaseAlpha = 0.1;
         // ---------------------
 
         // Resize Canvas
@@ -133,28 +130,24 @@ window.addEventListener('DOMContentLoaded', () => {
         function animate() {
             ctx.clearRect(0, 0, width, height);
             
-            // Dark-only color
+            // Hardcoded Indigo Color (since we are Dark Mode only)
             const color = '129, 140, 248'; // Indigo-400
 
             particles.forEach(p => {
-                // Calculate distance to mouse
                 const dx = mouse.x - p.x;
                 const dy = mouse.y - p.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 
-                // Interaction Radius
                 if (dist < 150) {
                     p.targetAlpha = 0.8 - (dist / 150) * 0.8;
                 } else {
                     p.targetAlpha = p.baseAlpha;
                 }
 
-                // Smooth transition
                 p.alpha += (p.targetAlpha - p.alpha) * 0.1;
 
                 if (p.alpha > 0.01) {
                     ctx.fillStyle = `rgba(${color}, ${p.alpha})`;
-                    // Use the size variable here
                     ctx.fillRect(p.x, p.y, particleSize, particleSize);
                 }
             });

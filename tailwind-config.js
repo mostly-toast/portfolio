@@ -1,8 +1,7 @@
-// Tailwind inline config moved out of HTML
-// Must be loaded before the CDN tailwindcss script tag
+// Tailwind inline config - Cleaned for Dark Mode Only
 window.tailwind = window.tailwind || {};
 window.tailwind.config = {
-  darkMode: 'class',
+  // Removed darkMode: 'class' (Not needed anymore)
   theme: {
     extend: {
       fontFamily: {
