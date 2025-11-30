@@ -43,12 +43,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const typeWriterElement = document.getElementById('typewriter');
     if (typeWriterElement) {
         const phrases = [
-            "Computer Science Engineer",
-            "Machine Learning Enthusiast",
+           "ML Engineer",
+            "Python Developer", 
             "Flutter Developer",
-            "Python Developer",
-            "Linux Power-User",
-            "Data Science Student"
+            "Data Engineer",
+            "Linux Daily Driver",
+            "FOSS Enthusiast"
         ];
         
         let phraseIndex = 0;

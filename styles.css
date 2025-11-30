@@ -1,4 +1,10 @@
 /* Base Styles */
+/* Enhanced Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Accounts for fixed navbar */
+}
+
 body { font-family: 'JetBrains Mono', monospace; }
 
 /* Custom Pixel Borders - Dark Mode Colors Only */
